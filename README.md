@@ -6,4 +6,3 @@ The [Skeleton API](maap-skeleton.yaml) is an initial specification proposal to b
 ## Implementations
 
 - [NASA MAAP API](https://github.com/MAAP-Project/maap-api-nasa): Python Flask implementation of this API specification.
-``
