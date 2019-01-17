@@ -400,9 +400,12 @@ definitions:
       name:
         type: string
         description: name of the service
+      organization:
+        type: string
+        description: Organization name
       description:
         type: string
-        description: Description of the service        
+        description: Description of the service
       version:
         type: string
         description: version of the service
