@@ -126,28 +126,6 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"            
-            
-  /dps/jobs/{job_id}/submit:
-    post:
-      tags:
-        - DPS
-      description: Create a job entry based on the job definition. Note that this creates a entry but does not start it. The entry needs to be executed using jobentries end point.
-      operationId: submit_job
-      parameters:
-        - name: job_id
-          in: path
-          description: unique id of job
-          type: string
-          required: true        
-      responses:
-        200:
-          description: Successful submission
-          schema:
-            $ref: "#/definitions/SubmitJobResponse"
-        default:
-          description: Error
-          schema:
-            $ref: "#/definitions/ErrorResponse"
 
   /dps/jobentries:
     get:
@@ -163,6 +141,27 @@ paths:
             type: array
             items:
               $ref: "#/definitions/JobEntry"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+    post:
+      tags:
+        - DPS
+      description: Create a job entry based on the job definition. Note that this creates a entry but does not start it. The entry needs to be executed using jobentries end point.
+      operationId: create_jobentry
+      parameters:
+        - name: job_id
+          in: path
+          description: unique id of job
+          type: string
+          required: true
+      responses:
+        200:
+          description: Successful submission
+          schema:
+            $ref: "#/definitions/SubmitJobResponse"
         default:
           description: Error
           schema:
@@ -190,11 +189,11 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
-  /dps/jobentries/{entry_id}/run:
+  /dps/jobentries/{entry_id}/execute:
     post:
       tags:
         - DPS
-      description: Run job entry
+      description: Execute job entry
       operationId: run_jobentry
       parameters:
         - name: entry_id
