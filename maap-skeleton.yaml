@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  version: "0.1.0"
+  version: "0.1.1"
   title: MAAP API
 
 basePath: /api/v1
@@ -66,10 +66,10 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"   
  
-  /jobs:
+  /dps/jobs:
     get:
       tags:
-        - Job
+        - DPS
       description: Get list of jobs
       operationId: get_jobs
        
@@ -87,7 +87,7 @@ paths:
 
     post:
       tags:
-        - Job
+        - DPS
       description: Create a job
       operationId: create_job
       parameters:
@@ -95,7 +95,7 @@ paths:
           in: body
           required: true
           schema:
-            $ref: "#/definitions/JobInput"             
+            $ref: "#/definitions/JobInput"
       responses:
         200:
           description: New job
@@ -105,10 +105,10 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"            
-  /jobs/{job_id}:
+  /dps/jobs/{job_id}:
     get:
       tags:
-        - Job
+        - DPS
       description: Get a job
       operationId: get_job
       parameters:
@@ -127,10 +127,10 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"            
             
-  /jobs/{job_id}/submit:
+  /dps/jobs/{job_id}/submit:
     post:
       tags:
-        - Job
+        - DPS
       description: Create a job entry based on the job definition. Note that this creates a entry but does not start it. The entry needs to be executed using jobentries end point.
       operationId: submit_job
       parameters:
@@ -149,10 +149,10 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
-  /jobentries:
+  /dps/jobentries:
     get:
       tags:
-        - JobEntry
+        - DPS
       description: Get list of job entries
       operationId: get_jobentries
 
@@ -168,10 +168,10 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
-  /jobentries/{entry_id}:
+  /dps/jobentries/{entry_id}:
     get:
       tags:
-        - JobEntry
+        - DPS
       description: Get a job entry
       operationId: get_jobentry
       parameters:
@@ -190,10 +190,10 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
 
-  /jobentries/{entry_id}/run:
+  /dps/jobentries/{entry_id}/run:
     post:
       tags:
-        - JobEntry
+        - DPS
       description: Run job entry
       operationId: run_jobentry
       parameters:
@@ -215,10 +215,10 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"  
 
-  /algorithms:
+  /mas/algorithms:
     get:
       tags:
-        - Algorithm
+        - MAS
       description: Get list of algorithms
       operationId: get_algorithms
        
@@ -236,7 +236,7 @@ paths:
 
     post:
       tags:
-        - Algorithm
+        - MAS
       description: Create an algorithm
       operationId: create_algorithm
       parameters:
@@ -254,10 +254,10 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"            
-  /algorithms/{algorithm_id}:
+  /mas/algorithms/{algorithm_id}:
     get:
       tags:
-        - Algorithm
+        - MAS
       description: Get an algorithm
       operationId: get_algorithm
       parameters:
@@ -276,10 +276,10 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"            
      
-  /collections:
+  /cmr/collections:
     post:
       tags:
-        - Collection
+        - CMR
       description: Create a collection
       operationId: create_collection
       parameters:
@@ -297,10 +297,10 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"            
-  /collections/{collection_id}:
+  /cmr/collections/{collection_id}:
     get:
       tags:
-        - Collection
+        - CMR
       description: Get a collection
       operationId: get_collection
       parameters:
@@ -320,7 +320,7 @@ paths:
             $ref: "#/definitions/ErrorResponse"  
     delete:
       tags:
-        - Collection
+        - CMR
       description: Delete a collection
       operationId: delete_collection
       parameters:
@@ -335,10 +335,10 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"             
      
-  /granules:
+  /cmr/granules:
     post:
       tags:
-        - Granule
+        - CMR
       description: Create a granule
       operationId: create_granule
       parameters:
@@ -356,10 +356,10 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"            
-  /granules/{granule_id}:
+  /cmr/granules/{granule_id}:
     get:
       tags:
-        - Granule
+        - CMR
       description: Get a granule
       operationId: get_granule
       parameters:
@@ -379,7 +379,7 @@ paths:
             $ref: "#/definitions/ErrorResponse"  
     delete:
       tags:
-        - Granule
+        - CMR
       description: Delete a granule
       operationId: delete_granule
       parameters:
